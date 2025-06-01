@@ -1,7 +1,7 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
-import { type NextRequest, NextResponse } from 'next/server'
+import { NextResponse, type NextRequest } from 'next/server'
 
-export async function updateSession(request: NextRequest) {
+export const createClient = (request: NextRequest) => {
   let response = NextResponse.next({
     request: {
       headers: request.headers,
@@ -34,7 +34,5 @@ export async function updateSession(request: NextRequest) {
     }
   )
 
-  await supabase.auth.getSession()
-
-  return response
+  return { supabase, response }
 } 
