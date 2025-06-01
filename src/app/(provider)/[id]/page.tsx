@@ -6,12 +6,10 @@ import { Star, MapPin, Clock, MessageSquare, CalendarDays, ShieldCheck, CheckCir
 import Image from "next/image"
 import { useParams } from "next/navigation"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
-// Import new sub-components
-import StatsBar from "@/components/provider-profile/stats-bar"
-import GallerySection from "@/components/provider-profile/gallery-section"
-import PricingTable from "@/components/provider-profile/pricing-table"
-import TrustIndicators from "@/components/provider-profile/trust-indicators"
+import StatsBar from "@/app/components/provider-profile/stats-bar"
+import GallerySection from "@/app/components/provider-profile/gallery-section"
+import PricingTable from "@/app/components/provider-profile/pricing-table"
+import TrustIndicators from "@/app/components/provider-profile/trust-indicators"
 
 // Enhanced Mock data
 const mockProvider = {
@@ -162,9 +160,25 @@ export default function ProviderProfilePage() {
                 </div>
               </CardContent>
             </Card>
-
             {/* Stats Bar */}
-            <StatsBar stats={provider.stats} />
+            <div className="grid grid-cols-4 gap-4">
+              <div className="bg-white rounded-lg p-4 text-center">
+                <div className="font-bold text-xl">{provider.stats.clients}</div>
+                <div className="text-sm text-gray-600">Clients</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 text-center">
+                <div className="font-bold text-xl">{provider.stats.experience}</div>
+                <div className="text-sm text-gray-600">Years Experience</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 text-center">
+                <div className="font-bold text-xl">{provider.stats.rating}</div>
+                <div className="text-sm text-gray-600">Rating</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 text-center">
+                <div className="font-bold text-xl">{provider.stats.completed}</div>
+                <div className="text-sm text-gray-600">Jobs Completed</div>
+              </div>
+            </div>
 
             <Tabs defaultValue="about" className="w-full">
               <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5 bg-gray-200 rounded-lg p-1">
