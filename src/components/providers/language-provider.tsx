@@ -1,14 +1,16 @@
+'use client'
+
 import { createContext, useState, ReactNode } from 'react'
 import { Language } from '@/i18n/translations'
 
 interface LanguageContextType {
   language: Language
-  setLanguage: (language: Language) => void
+  setLanguage: (lang: Language) => void
 }
 
 export const LanguageContext = createContext<LanguageContextType>({
   language: 'en',
-  setLanguage: () => {},
+  setLanguage: () => {}
 })
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
